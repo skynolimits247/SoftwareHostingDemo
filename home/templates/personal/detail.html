@@ -1,0 +1,24 @@
+{% extends "personal/home.html" %}
+{% block content %}
+<form action='' method=''>
+	{% csrf_token %}
+	<h2 style="color:white"><small style="color:white">OR <br>Tap the Download button to download the software :</small></h2>
+
+<table align="center" style="color:white; text-align:left">
+	<tbody>
+			<tr><th><h3>Logo</h3></th><td><img src='{{q.pic.url}}' width="200" height="200"></td></tr>
+			<tr><th><h3>Name</h3></th><td><input type='button' value='{{q.name}}' class="btn" name="os" id ="os"></td></tr>
+			<tr><th><h3>Size</h3></th><td><input type='button' value='{{q.size}}' class="btn" name="os" id ="os"></td></tr>
+			<tr><th><h3>Version</h3></th><td><input type='button' value='{{q.version}}' class="btn" name="os" id ="os" ></td></tr>
+			<tr><th><h3>Total Downloads</h3></th><td><input type='button' value='{{q.total_downloads}}' class="btn" name="os" id ="os"></td></tr>
+			<tr><th><h3>Ratings</h3></th><td><input type='button' value='{{q.ratings}}' class="btn" name="os" id ="os"></td></tr>
+			<tr><th><h3>Description</h3></th><td><div class='well'><p>{{q.desc}}</p></div></td></tr>
+			<tr><th><h3>Suggestion</h3></th><td><div class='well'><p>Your Operating System is {{q5}}. So, its suggested that you download the {{q5}} editon of sofware</p></div></td></tr>
+			<tr><th><h3>Download for Windows 32-bit</h3></th>{% if q1 %}{% for i in q1 %}<td><a class="btn btn-success" name="os" id ="os" href="{{i.link}}">Download | &nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>{% endfor %}{% else %}<td><input type='button' class="btn btn-danger" value='Not Available' class="btn" name="os" id ="os"></td></tr> {% endif %}
+			<tr><th><h3>Download for Windows 64-bit</h3></th>{% if q2 %}{% for i in q2 %}<td><a class="btn btn-success" name="os" id ="os" href="{{i.link}}">Download | &nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>{% endfor %}{% else %}<td><input type='button' class="btn btn-danger" value='Not Available' class="btn" name="os" id ="os"></td></tr> {% endif %}
+			<tr><th><h3>Download for Mac</h3></th>{% if q3 %}{% for i in q3 %}<td><a class="btn btn-success" name="os" id ="os" href="{{i.link}}">Download | &nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>{% endfor %}{% else %}<td><input type='button' class="btn btn-danger" value='Not Available' class="btn" name="os" id ="os"></td></tr> {% endif %}
+			<tr><th><h3>Download for Android</h3></th>{% if q4 %}{% for i in q4 %}<td><a class="btn btn-success" name="os" id ="os" href="{{i.link}}">Download | &nbsp;<span class="glyphicon glyphicon-ok"></span></a></td>{% endfor %}{% else %}<td><input type='button' class="btn btn-danger" value='Not Available' class="btn" name="os" id ="os"></td></tr> {% endif %}
+</tbody>
+</table>
+</form>
+{% endblock %}

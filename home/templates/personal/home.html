@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	<title> Software Hosting </title>
+	<meta name="description" content="Software Hosting">
+	<!-- Latest compiled and minified CSS -->
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+	<style>
+	label   {color: white;}
+.btn {
+    background-color: #00C274;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+
+}
+.well{
+background: #00C274;    !important;
+color:white;
+}
+.xyz{
+	text-color: white;
+	length: 100;
+}
+	body{
+		padding-top: 40px;
+		background-color: black;
+		font-family: "font-family:verdana;"
+		text-color: white;
+	}
+	.jumbotron{
+color: white;
+align: left;
+background-color: black;
+background-image: url("{% static 'personal/static/image/bg4.jpg' %}");
+img:circle;
+font-family: "font-family:verdana;"
+padding-right: 20px;
+margin-left: 195px;
+margin-right: 185px;
+padding-bottom: 200px;
+padding-top: 20px;
+}
+
+	</style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+  				</button>
+
+  				<a href="" class="navbar-brand">LOGO</a>
+  			</div><!-- Navbar Header-->
+  			<div class="collapse navbar-collapse navbar-center" id="navbar-collapse">
+
+
+  				<ul class="nav navbar-nav nav-pills navbar-right">
+						<li><a href="#">Total Visitors : {{page}}</a>
+  					<li><a href="/home">Home</a>
+					<li><a href="#Downloads">Downloads</a>
+  					<li><a href="/community/">Community</a>
+  					<li><a href="#Contact">Contact Us</a>
+					<li><a href="#Support">Support</a>
+
+					<li><a href="" class="btn navbar-btn">Download App Now</a></li>
+  				</ul>
+  			</div>
+  		</div><!-- End Container-->
+  	</nav><!-- End navbar -->
+
+	<!-- jumbotron-->
+
+  	<div class="jumbotron" style="padding-top:10%"  id="Home">
+
+  		<div class="container text-left">
+  			<p style="margin-left:50px; font-size:40px;  font-family: sans-serif;">Download</p>
+  			<p style="margin-left: 50px; "> Free Softwares <br> For All your needs</p>
+  				<a href="#Downloads" class="btn btn--lg" style=" margin-left: 50px;"><span style=" font-size:20px;  font-family: tahoma;">Download For Free</span></a>
+  		</div><!-- End container -->
+
+  	</div><!-- End jumbotron-->
+	<!-- Banner-->
+	<div class="container col-lg-12 text-center" style="background-color: #00C274; margin-top: -30px;">
+	<p style="text-align:center; font-size:30px;  font-family: sans-serif; color:white; margin-top:15px;">
+	<strong>Download our mobile App for free today</strong><br>
+	Tap below to download the app.
+	</p>
+
+	<a href="" class="btn" style="background-color:#5E7069;">Download App Now</a>
+
+	</div>
+	<!--End Banner-->
+	<!-- Support -->
+	<div class="container" style="margin-top:10% padding-top:5%">
+		<section>
+			<div class="page-header text-center" id="Support">
+  				<h2 class="btn" style="color:white; background-color:#5E7069; margin-right:5%; margin-left:5%; padding-right:40%; padding-left:40%;"><b>Support</b></h2><h4 style="color:white"> <br>Some of the platforms supported by us are as follows :</h4>
+  			</div><!-- End Page Header -->
+
+  			<div class="row page-header">
+  				<div class=" well col-sm-12" style="background-color:grey;">
+						<div class="col-sm-5">
+	  					<img src="{% static 'personal/static/image/mac.png' %}" class="img-responsive" alt="image" style="height: 150px;">
+	  				</div>
+  					<h1 style="color:white">Macintosh Operating System</h1>
+  					<h4 style="color:white">We provied one click download to various apps for MAC Operating System. You just need to select the app as per your need and download it without any pop-ups or irrelevant advertisements.</h4>
+  				</div>
+
+				<hr>
+
+  			</div><!-- End row -->
+  			<div class="row page-header" >
+  				<div class=" well col-sm-4;" style="background-color:grey;">
+						<div class="col-sm-4">
+	  					<img src="{% static 'personal/static/image/windows.png' %}" class="img-responsive" alt="image" style="height: 150px;">
+	  				</div>
+  					<h1 style="color:white">Windows Operating System</h1>
+  					<h4 style="color:white">We provied one click download to various apps for Windows Operating System. You just need to select the app as per your need and download it without any pop-ups or irrelevant advertisements.</h4>
+  				</div>
+  			</div>
+  			<div class="row page-header">
+  				<div class=" well col-sm-12" style="background-color:grey;" style="height: 50px;">
+						<div class="col-sm-4">
+	  					<img src="{% static 'personal/static/image/android.png' %}" class="img-responsive" alt="image" style="height: 150px;">
+	  				</div>
+  					<h1 style="color:white">Android Operating System</h3>
+  					<h4 style="color:white">We provied one click download to various apps for Android Operating System. You just need to select the app as per your need and download it without any pop-ups or irrelevant advertisements.</h4>
+  				</div>
+  			</div>
+
+  			<hr>
+
+  			<div class="row">
+  				<div class="col-sm-4" >
+  					<div class="panel panel-default text-center" style="background-color: #00C274;">
+  						<div class="panel-body" >
+  							<span class="glyphicon glyphicon-ok"></span>
+  							<h4 style="color:white">Free Softwares</h4>
+  							<p style="color:white">We provide free softwares as per your need. You can browse the the content and download the desired software of your choice.</p>
+  						</div>
+  					</div>
+  				</div>
+
+  				<div class="col-sm-4">
+  					<div class="panel panel-default text-center" style="background-color: #00C274;">
+  						<div class="panel-body">
+  							<span class="glyphicon glyphicon-star"></span>
+  							<h4 style="color:white">No Advertisements or Pop-ups</h4>
+  							<p style="color:white">We provide pure uninterrupted interaction. That is why you won't see any unnecessary ad-popups popping out of your screen. We understand the pain of those pop-ups.</p>
+  						</div>
+  					</div>
+  				</div>
+
+  				<div class="col-sm-4">
+  					<div class="panel panel-default text-center" style="background-color: #00C274;">
+  						<div class="panel-body">
+  							<span class="glyphicon glyphicon-play-circle"></span>
+  							<h4 style="color:white">Step by Step Instructions</h4>
+  							<p style="color:white">If you are not familiar or used too with the internet downloads and all don't you not worry at all. We will guide you to what and how to donwload free softwares.</p>
+  						</div>
+  					</div>
+  				</div>
+  			</div><!-- end row -->
+
+		</section>
+
+
+
+
+	</div><!-- End Support -->
+
+		<!-- Downloads -->
+	<div class="container text-center" style="margin-top:10% padding-top:5%">
+		<section>
+			<div class="page-header text-center" id="Downloads">
+  				<h2 class="btn" style="color:white; background-color:#5E7069; margin-right:5%; margin-left:5%; padding-right:40%; padding-left:40%;">Downloads</h2>
+  			</div><!-- End Page Header -->
+				<div class='container-fluid text-center'>
+					{% include "personal/search.html" %}
+			{% block content %}
+			 {% endblock %}
+		 </div><!-- End Downloads -->
+		 </div>
+	<!-- Footer -->
+	<section>
+	<footer>
+	<div class="container" style="background-color: black; padding-right:78%; padding-top:2%;" id="Contact">
+
+
+	<table>
+    <tr>
+	<td class="col-lg-6">
+		<div class="page-header text-center">
+          <h2 class="btn" style="color:white; background-color:#5E7069; margin-right:5%; margin-left:5%; padding-right:40%; padding-left:40%;">Contact Us</h2>
+		 </div><!-- End Page Header -->
+		 <div class="container text-center">
+            <p style="color:white">Send us a message, or contact us from the address below : </p>
+            <address style="color:white">
+              <strong style="color:white">JIMS Student Group</strong></br>
+              New Delhi </br>
+              Plot no. XX</br>
+              New delhi - 110017</br>
+              P: +91 9999999999
+            </address>
+
+		     </div>
+	</td></tr>
+
+
+	{% include "personal/subscribe.html" %}
+		<tr>
+		<td colspan="2">
+		<div class="container text-center page-header">
+        <ul class="list-inline ">
+
+          <li><a href="http://www.twitter.com/"><img src="{% static 'personal/static/image/twittericon.png' %}" style="height: 50px;"></a></li>
+          <li><a href="http://www.facebook.com/"><img src="{% static 'personal/static/image/fbicon.png' %}" style="height: 50px;"></a></li>
+          <li><a href="http://www.instagram.com/"><img src="{% static 'personal/static/image/instaicon.png' %}" style="height: 50px;"></a></li>
+
+        </ul>
+
+        <p style="color:white">&copy; Copyright @ 2017</p>
+
+	</td>
+
+	</tr>
+
+
+	  </table></div></section></div><!-- End Page Header -->	</footer>
+	  <!-- end Footer-->
+ <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	{% load staticfiles %}
+	<title> Community </title>
+	<meta name="description" content="Software Hosting Community">
+	<!-- Latest compiled and minified CSS -->
+	 <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+</head>
+	<style>
+  .h1{
+    text-size: 12;
+  }
+	body{
+		padding-top: 60px;
+		margin-left: 20%;
+		margin-right: 20%;
+		font-family: "font-family:verdana;"
+	}
+
+	</style>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+					  <span class="icon-bar"></span>
+  				</button>
+
+  				<a href="" class="navbar-brand"><img src="{{cu.userex.pic.url}}" class="img-circle" alt="{{cu.username}}" width="100" height="100">
+  			</a></div><!-- Navbar Header-->
+  			<div class="collapse navbar-collapse navbar-center" id="navbar-collapse">
+
+
+  				<ul class="nav navbar-nav nav-pills navbar-right">
+  					<li><a href="/community/">Home</a>
+					  <li><a href="/home/">Downloads</a>
+  					<li><a href="/home#Contact">Contact Us</a>
+					  <li><a href="/home#Support">Support</a>
+					  <li><a href="logout/" class="btn navbar-btn">Logout</a></li>
+  				</ul>
+  			</div>
+  		</div><!-- End Container-->
+  	</nav><!-- End navbar -->
+
+<h1 ><b style="font-size:50;">Welcome</b> <strong>{{cu.first_name}}</strong></h1>
+
+{% include "search.html" %}
+
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+<form action='' method='POST' enctype="multipart/form-data">
+	<div class="well">
+<h2>Create Post :</h2>
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-success">Save</button><br>
+</div>
+</form>
+<div class="well" style="padding-top:10%; margin-left:20%; margin-right:20%;">
+	<h1 style="text-align:center;">Posts :</h1>
+<table class="table table-striped" style="text-align:center;">
+{% if q %}
+{% for i in q %}
+<tr><td><img src="{{i.author.userex.pic.url}}" class="img-circle" alt="{{i.author.username}}" width="100" height="100"></td></tr>
+<tr><td>Posted By : {{ i.author.first_name }}<br> <small>{{ i.date_created|timesince }} ago</small></td></tr>
+<tr><td><h3>Title : {{i.title}}</h3><br><i>Comment : <p>{{i.comment}}</i></p>
+{% if i.author.username ==  cu.username %}
+<a type="button" class="btn btn-danger" href="delete/{{i.id}}/">Delete Post</a>&nbsp;<a type="button" class="btn btn-primary" href="update/{{i.id}}/">Update Post</a>
+{% endif %}</td></tr>
+{% endfor %}
+{% else %}
+<tr><td>Sorry no results found...!</tr></td>
+{% endif %}
+
+</table>
+</div>
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

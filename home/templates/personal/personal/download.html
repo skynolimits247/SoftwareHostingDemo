@@ -1,0 +1,14 @@
+{% extends "personal/home.html" %}
+{% block content %}
+<form action='/search/' method='GET'>
+<table align="center">
+	<tbody>
+	<tr><td><a href="/catview/" class="btn col-lg-11" name="category" id="category" value="social">Social</a></td>
+	<td><a href="/catview/" class="btn col-lg-11" name="category" id="category" value="browser">Browser</a></td></tr>
+	<tr><td><a href="/catview/" class="btn col-lg-11" name="category" id="category" value="editing">Graphics and Photo Editing</a></td>
+	<td><a href="/catview/" class="btn col-lg-11" name="category" id="category" value="multimedia">Multimedia</a></td></tr>
+	<tr><td colspan="2"><a href="/catview/" class="btn col-lg-11" name="category" id="category" value="remoteapp">Remote Desktop Apps</a></td></tr>
+</tbody>
+</table>
+</form>
+{% endblock %}

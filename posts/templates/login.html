@@ -1,0 +1,115 @@
+<html>
+<head>
+
+{% load staticfiles %}
+
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}">
+	<!-- Optional theme -->
+	<script src="https://apis.google.com/js/platform.js" async defer>
+
+	</script>
+	<meta name="google-signin-client_id" content="979768812109-13cjn00itg24k7ltrrpso5m6upm2j2b1.apps.googleusercontent.com">
+
+</head>
+<title>LOGIN PAGE</title>
+<body>
+<script>
+ window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '2045704855653351',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+!-- Navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" id="my-navbar">
+  		<div class="container">
+  			<div class="navbar-header">
+  				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+  					<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+  					<span class="icon-bar"></span>
+  				</button>
+
+  				<a href="" class="navbar-brand">LOGO</a>
+
+  			</div><!-- Navbar Header-->
+
+
+  			<div class="collapse navbar-collapse navbar-center" id="navbar-collapse">
+
+
+  				<ul class="nav navbar-nav nav-pills navbar-right">
+  					<li><a href="/community/">Home</a></li>
+						<li><a href="/home/">Downloads</a></li>
+						<li><a href="/home#Contact">Contact Us</a>
+					<li><a href="/home#Support">Support</a>
+  				</ul>
+  			</div>
+
+  		</div><!-- End Container-->
+  	</nav><!-- End navbar -->
+		<div class="well text-center" style="margin-right:20%; margin-left:20%;">
+		<h1 style="text-align:center;">Log In to write posts :</h1>
+		<form action='community/check/' method='POST'>
+		{% csrf_token %}
+		<table style="text-align:center" align="center">
+		<tr>
+		<td style="padding-top:3%; padding-bottom:3%;"><strong>USERNAME<strong></td>
+		<td>
+		<input type="text" placeholder="type your username here" name="username" id="search_box" size="30" class="panel" style="padding-top:3%; padding-bottom:3%;"></td></td></tr>
+		<tr>
+		<td style="padding-top:3%; padding-bottom:3%;"><strong>PASSWORD<strong></td>
+		<td>
+		<input type="password" placeholder="type your password here" name="password" id="search_box" size="30" class="panel" style="padding-top:3%; padding-bottom:3%;"></td></td></tr>
+		<tr><td><button type='submit' class="btn btn-success">LogIn</button></td><td><div class="g-signin2" data-onsuccess="onSignIn"></div>
+		</td></tr>
+		<tr><td colspan="2"><a href="community/register" class="btn btn-default">REGISTER</a></td><td><fb:login-button
+		  scope="public_profile,email"
+		  onlogin="checkLoginState();">
+		</fb:login-button></td></tr>
+		</table>
+		</form>
+		</div>
+
+<div class="well" style="padding-top:10%; margin-left:20%; margin-right:20%;">
+	<h1 style="text-align:center;">Posts :</h1>
+<table class="table table-striped" style="text-align:center;">
+{% if q %}
+{% for i in q %}
+<tr><td><img src="{{i.author.userex.pic.url}}" class="img-circle" alt="{{i.author.username}}" width="100" height="100"></td></tr>
+<tr><td>Posted By : {{ i.author.first_name }}<br> <small>{{ i.date_created|timesince }} ago</small></td></tr>
+<tr><td><h3>Title : {{i.title}}{% if i.author.username ==  cu.username %}
+<a type="button" class="btn btn-danger" href="delete/{{i.id}}/">Delete Post</a><a type="button" class="btn btn-primary" href="update/{{i.id}}/">Update Post</a>
+{% endif %}</h3><br><i>Comment : <p>{{i.comment}}</i></p>
+</tr></td>
+{% endfor %}
+{% else %}
+<tr><td>Sorry no results found...!</tr></td>
+{% endif %}
+
+</table>
+</div>
+
+ <!-- end Footer-->
+
+ <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body></html>

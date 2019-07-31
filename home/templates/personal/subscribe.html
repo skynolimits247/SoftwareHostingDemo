@@ -1,0 +1,17 @@
+
+<tr>
+
+	<td class="col-lg-6">
+	<div class="page-header text-center">
+	<h2 class="btn" style="color:white; background-color:#5E7069;">Subscribe for new software releases</h2>
+	</div>
+
+        <form action='' name="my_form" method='POST'>
+          <div class="form-group text-center">
+            {% csrf_token %}
+						{{ form.as_p }}
+          <button type="submit" class="btn ">Subscribe</button>
+          </div>
+        </form>
+		</td>
+		</tr>

@@ -1,0 +1,18 @@
+{% extends "personal/home.html" %}
+{% block content %}
+<form action='softname/' method='POST'>
+	{% csrf_token %}
+<table align="center" style="color:white;">
+	<thead><tr><td><h2>Name</h2></td><td><h2>Size</h2></td><td><h2>Version</h2></td></tr></thead>
+	<tbody>
+{% for i in q %}
+<tr>
+			<td><input type='submit' value='{{i.name}}' class="btn col-lg-11" name="name" id ="name" href="submit"></td>
+			<td><input type='button' value='{{i.size}}' class="btn col-lg-11" name="name" id ="name"></td>
+			<td><input type='button' value='{{i.version}}' class="btn col-lg-11" name="name" id ="name"></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</form>
+{% endblock %}

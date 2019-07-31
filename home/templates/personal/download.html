@@ -1,0 +1,23 @@
+{% extends "personal/home.html" %}
+{% block content %}
+<h2 style="color:white"><small style="color:white">OR <br>Select the software as per the category :</small></h2>
+<form action='catview' method='POST'>
+	{% csrf_token %}
+<table align="center">
+	<tbody>
+	<tr><td><input type='submit' value='Social' class="btn col-lg-11" name="category" id ="category" href="submit"></td></tr>
+	<tr><td><input type='submit' value='Browser' class="btn col-lg-11" name="category" id ="category" href="submit"></td></tr>
+	<tr><td><input type='submit' value='Graphic Design and Photo Editing' class="btn col-lg-11" name="category" id ="category" href="submit"></td></tr>
+	<tr><td><input type='submit' value='Multimedia' class="btn col-lg-11" name="category" id ="category" href="submit"></td></tr>
+	<tr><td><input type='submit' value='Remote Connection' class="btn col-lg-11" name="category" id ="category" href="submit"></td></tr>
+</tbody>
+</table>
+</form>
+{% endblock %}
+<!--<tbody>
+<tr><td><a href="social/" class="btn col-lg-11" name="category" id="category" value="social">Social</a></td>
+<td><a href="browser/" class="btn col-lg-11" name="category1" id="category1" value="browser">Browser</a></td></tr>
+<tr><td><a href="graphics/" class="btn col-lg-11" name="category2" id="category2" value="editing">Graphics and Photo Editing</a></td>
+<td><a href="multimedia/" class="btn col-lg-11" name="category3" id="category3" value="multimedia">Multimedia</a></td></tr>
+<tr><td colspan="2"><a href="remoteapp/" class="btn col-lg-11" name="category4" id="category4" value="remoteapp">Remote Desktop Apps</a></td></tr>
+</tbody>-->
