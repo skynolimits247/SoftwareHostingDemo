@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     #url(r'^login/$', login),
     url(r'register/$',register),
-    url(r'^$',home),
+    url(r'^',home),
     url(r'delete/(\d+)/$',delete),
     url(r'check/$',auth_view),
     url(r'logout/$',logout),

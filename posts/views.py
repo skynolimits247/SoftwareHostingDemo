@@ -9,15 +9,15 @@ from django.contrib import auth
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 from home.models import userex
 from home.models import post
-from django.shortcuts import render_to_response
-from forms import Regforms
+from django.shortcuts import render
+from .forms import Regforms
 from django.views.generic import CreateView
 from django import forms
-from django_user_agents.utils import get_user_agent
+# from django_user_agents.utils import get_user_agent
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
@@ -49,26 +49,19 @@ def delete(request,d):
 
 def register(request):
     user=request.user
-    print "in register",request.POST
     if request.method=='POST':
-        print "method post"
         form=Regforms(request.POST,request.FILES)
-        print request.POST,request.FILES
         if form.is_valid():
-            print "form is valid"
-            #username=form.cleaned_data['username']
-            #password=form.cleaned_data['password']
-            #first_name=form.cleaned_data['first_name']
-            #last_name=form.cleaned_data['last_name']
+            username=form.cleaned_data['username']
+            password=form.cleaned_data['password']
+            first_name=form.cleaned_data['first_name']
+            last_name=form.cleaned_data['last_name']
             #confirm_password=form.cleaned_data['confirm_password']
-            #email=form.cleaned_data['email']
+            email=form.cleaned_data['email']
             #pic=form.cleaned_data['pic']
-            print"user creating"
 
             user=User.objects.create_user(username=username, password=password,
                                      email=email,first_name=first_name,last_name=last_name)
-            print"user cerated"
-            print"form cerating"
 
             f=form.save(commit=False)
             f.user=user
@@ -85,14 +78,9 @@ def edit(request, d):
     user= request.user
     m=User.objects.get(id=d)
     if request.method=='POST':
-        print "POST1"
         form=Editforms(request.POST,request.FILES,instance = m)
-        print "POST2"
         user=User.objects.filter(id=d)
         if form.is_valid():
-            print "in valid"
-            print "user = ",user
-            print "after delete user = ",user
             password=form.cleaned_data['password']
             first_name=form.cleaned_data['first_name']
             last_name=form.cleaned_data['last_name']
@@ -103,11 +91,9 @@ def edit(request, d):
             #user.update(first_name=first_name,last_name=last_name,email=email)
 
             u=userex.objects.filter(user_id=d)
-            print "u= ",u
             u.delete()
             f=form.save(commit=False)
             f.user=user
-            print"f= ",f,"f.user= ",f.user
             f.save()
             update_session_auth_hash(request, user)
             messages.success(request, 'Your password was successfully updated!')
@@ -122,18 +108,15 @@ def edit(request, d):
 
 
 def home(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return index(request)
     else:
         return login(request)
 
 def auth_view(request):
-    print"in auth view"
     username = request.POST['username']
     password = request.POST['password']
-    print username,password
     user = auth.authenticate(username=username,password=password)
-    print "user = ",user
     if user is not None:
         auth.login(request,user)
         return HttpResponseRedirect('/community/')
@@ -166,7 +149,6 @@ def update(request,d):
     p=post.objects.order_by('-date_created')
     f=request.user
     m=post.objects.get(id=d)
-    print m
     if request.method=='POST':
         form=homeform(request.POST,instance = m)
         if form.is_valid():

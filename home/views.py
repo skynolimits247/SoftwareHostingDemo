@@ -9,18 +9,18 @@ from django.contrib import auth
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 from .models import software_desc
 from .models import win_32
 from .models import win_64
 from .models import mac
 from .models import android
-from django.shortcuts import render_to_response
-from forms import subsform
+from django.shortcuts import render
+from .forms import subsform
 from django.views.generic import CreateView
 from django import forms
-from django_user_agents.utils import get_user_agent
+# from django_user_agents.utils import get_user_agent
 def index(request):
     if request.method=='POST':
             form=subsform(request.POST)
@@ -41,6 +41,7 @@ def index(request):
 
 def catview(request):
     if request.method=='POST':
+            print("IN CATVIEW POST")
             form=subsform(request.POST)
             if form.is_valid():
                 form.save()
@@ -53,6 +54,7 @@ def catview(request):
     if p:
         return render(request,'personal/catview.html',{'q':p,'form':form,'page':x.hits})
     else:
+        print("IN CATVIEW GET")
         return render(request,'personal/catview.html',{'q':p,'form':form,'page':x.hits})
 
 

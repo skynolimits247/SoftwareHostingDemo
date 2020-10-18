@@ -6,7 +6,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^', views.index, name='index'),
     url(r'^home/', views.index, name='index'),
     url(r'catview$', views.catview, name='catview'),
     url(r'softname/$', views.softname, name='softname'),

@@ -24,7 +24,14 @@ SECRET_KEY = '!3v6p=ny1e)(&mp+$$#psnh%dd%l)h+uku6rbk_44+m5wu2f)d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAI_PORT = '587'
+EMAIL_USE_TLS = 'True'
 
+SOCIAL_AUTH_GOOGLE_OATH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OATH2_SECRET = ''
 ALLOWED_HOSTS = []
 
 
@@ -41,16 +48,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_user_agents',
 ]
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.open_id.OpenIdAuth',  # for Google authentication
+    'social_core.backends.google.GoogleOpenId',  # for Google authentication
+    'social_core.backends.google.GoogleOAuth2',  # for Google authentication
+    'social_core.backends.github.GithubOAuth2',  # for Github authentication
+    'social_core.backends.facebook.FacebookOAuth2',  # for Facebook authentication
+    'django.contrib.auth.backends.ModelBackend',
+]
 
-MIDDLEWARE_CLASSES = [
-    'django.middleware.security.SecurityMiddleware',
+MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
     'django_user_agents.middleware.UserAgentMiddleware',
 ]
 
@@ -67,7 +81,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.media',
+                'social_django.context_processors.backends',  # <- Here
+                'social_django.context_processors.login_redirect',
             ],
         },
     },

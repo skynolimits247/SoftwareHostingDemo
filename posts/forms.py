@@ -47,17 +47,13 @@ class Editforms(forms.ModelForm):
     pic=forms.FileField()
 
     def clean_confirm_password(self):
-        print"pass check"
-        print "i= pass_",self.cleaned_data
         pas=self.cleaned_data['password']
         conpass=self.cleaned_data['confirm_password']
-        print "i= conpass_",self.cleaned_data['confirm_password']
         if pas != conpass:
             raise forms.ValidationError('password and confirm password do not match')
 
     def clean_email(self):
         uname=self.cleaned_data['username']
-        print"email check"
         umail=self.cleaned_data['email']
         try:
             match=User.objects.get(email=umail).filter(username != uname)
@@ -107,7 +103,6 @@ class Regforms(forms.ModelForm):
     pic=forms.FileField()
 
     def clean_username(self):
-        print"uid check slf.cleaned data",self.cleaned_data
         uname=self.cleaned_data['username']
         try:
             match=User.objects.get(username=uname)
@@ -115,16 +110,12 @@ class Regforms(forms.ModelForm):
             return self.cleaned_data['username']
         raise forms.ValidationError('Username already exists..!!')
     def clean_confirm_password(self):
-        print"pass check"
-        print "i= pass_",self.cleaned_data
         pas=self.cleaned_data['password']
         conpass=self.cleaned_data['confirm_password']
-        print "i= conpass_",self.cleaned_data['confirm_password']
         if pas != conpass:
             raise forms.ValidationError('password and confirm password do not match')
 
     def clean_email(self):
-        print"email check"
         umail=self.cleaned_data['email']
         try:
             match=User.objects.get(email=umail)

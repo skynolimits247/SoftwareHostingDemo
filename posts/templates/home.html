@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	{% load staticfiles %}
+	{% load static %}
 	<title> Community </title>
 	<meta name="description" content="Software Hosting Community">
 	<!-- Latest compiled and minified CSS -->
@@ -46,9 +46,9 @@
   				<ul class="nav navbar-nav nav-pills navbar-right">
   					<li><a href="/community/">Home</a>
 					  <li><a href="/home/">Downloads</a>
-  					<li><a href="/home#Contact">Contact Us</a>
-					  <li><a href="/home#Support">Support</a>
-					  <li><a href="logout/" class="btn navbar-btn">Logout</a></li>
+  					<li><a href="/home#Contact/">Contact Us</a>
+					  <li><a href="/home#Support/">Support</a>
+					  <li><a href="/logout/" class="btn navbar-btn">Logout</a></li>
   				</ul>
   			</div>
   		</div><!-- End Container-->
@@ -83,7 +83,7 @@
 <tr><td>Posted By : {{ i.author.first_name }}<br> <small>{{ i.date_created|timesince }} ago</small></td></tr>
 <tr><td><h3>Title : {{i.title}}</h3><br><i>Comment : <p>{{i.comment}}</i></p>
 {% if i.author.username ==  cu.username %}
-<a type="button" class="btn btn-danger" href="delete/{{i.id}}/">Delete Post</a>&nbsp;<a type="button" class="btn btn-primary" href="update/{{i.id}}/">Update Post</a>
+<a type="button" class="btn btn-danger" href="/delete/{{i.id}}/">Delete Post</a>&nbsp;<a type="button" class="btn btn-primary" href="update/{{i.id}}/">Update Post</a>
 {% endif %}</td></tr>
 {% endfor %}
 {% else %}
